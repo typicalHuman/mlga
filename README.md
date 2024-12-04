@@ -2,8 +2,6 @@
 
 **Make Logs Great Again (MLGA)** is a VS Code extension that allows you to view Foundry debug logs in a more readable and comfortable format by allowing you to collapse/expand needed branches of test and search for specific logs.
 
-<img src="resources/logo.svg" width="100" height="100" align="right" />
-
 Additionally, some work has been done to make the default logs appear more pleasant, such as:
 
 - Different highlighting and icons for different types of logs
@@ -11,7 +9,7 @@ Additionally, some work has been done to make the default logs appear more pleas
 - Making some logs more readable (combining them into one log or removing unimportant details)
 - Hide setups
 
-![preview](images/preview.png)
+![preview](https://github.com/typicalHuman/mlga/blob/master/images/preview.png)
 
 ## Quick Intro
 
@@ -21,4 +19,4 @@ Additionally, some work has been done to make the default logs appear more pleas
 
 _If your logs are too long and you can't scroll, you should probably enable this option in VS Code_:
 
-![vscode](images/vscode_horizontal_scroll.png)
+![vscode](https://github.com/typicalHuman/mlga/blob/master/images/vscode_horizontal_scroll.png)
