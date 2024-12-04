@@ -1,0 +1,223 @@
+{
+  "name": "mlga",
+  "displayName": "MLGA",
+  "author": "typicalHuman",
+  "description": "Make Logs Great Again (foundry logs viewer).",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Testing",
+    "Visualization"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mlga",
+          "title": "MLGA",
+          "icon": "resources/logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "mlga": [
+        {
+          "id": "mlgaTreeView",
+          "name": "Tree",
+          "themeIcon": "mlga.folderColor"
+        }
+      ]
+    },
+    "colors": [
+      {
+        "id": "mlga.default",
+        "description": "Default color",
+        "defaults": {
+          "dark": "#ffffff",
+          "light": "#000000",
+          "highContrast": "#FFFF00"
+        }
+      },
+      {
+        "id": "mlga.new",
+        "description": "Color for entity creation",
+        "defaults": {
+          "dark": "#00FF00",
+          "light": "#008000",
+          "highContrast": "#00FF00"
+        }
+      },
+      {
+        "id": "mlga.return",
+        "description": "Color for return values",
+        "defaults": {
+          "dark": "#7300ff",
+          "light": "#7300ff",
+          "highContrast": "#7300ff"
+        }
+      },
+      {
+        "id": "mlga.console",
+        "description": "Color for return console logs",
+        "defaults": {
+          "dark": "#d416d7",
+          "light": "#d416d7",
+          "highContrast": "#d416d7"
+        }
+      },
+      {
+        "id": "mlga.vm",
+        "description": "Color for vm operations",
+        "defaults": {
+          "dark": "#c1c7c1",
+          "light": "#c1c7c1",
+          "highContrast": "#c1c7c1"
+        }
+      },
+      {
+        "id": "mlga.inactive",
+        "description": "Color for inactive operations",
+        "defaults": {
+          "dark": "#b1b1b1b5",
+          "light": "#b1b1b1b5",
+          "highContrast": "#b1b1b1b5"
+        }
+      },
+      {
+        "id": "mlga.event",
+        "description": "Color for vm events",
+        "defaults": {
+          "dark": "#385ef8",
+          "light": "#385ef8",
+          "highContrast": "#385ef8"
+        }
+      },
+      {
+        "id": "mlga.vm",
+        "description": "Color for vm operations",
+        "defaults": {
+          "dark": "#c1c7c1",
+          "light": "#c1c7c1",
+          "highContrast": "#c1c7c1"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "mlga.showSetups",
+          "when": "showSetups == false",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mlga.hideSetups",
+          "when": "showSetups == true",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mlga.filter",
+          "when": "filtered == false",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mlga.filterClear",
+          "when": "filtered == true",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mlga.expand",
+          "when": "expanded == false",
+          "group": "navigation@3"
+        },
+        {
+          "command": "mlga.collapse",
+          "when": "expanded == true",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "mlga.copy",
+          "group": "navigation@4"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "mlga.expand",
+        "title": "Expand",
+        "category": "Expand/collapse",
+        "icon": "$(expand-all)"
+      },
+      {
+        "command": "mlga.collapse",
+        "title": "Collapse",
+        "category": "Expand/collapse",
+        "icon": "$(collapse-all)"
+      },
+      {
+        "command": "mlga.filter",
+        "title": "Filter",
+        "category": "filter",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "mlga.filterClear",
+        "title": "Filter clear",
+        "category": "Filter",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "mlga.hideSetups",
+        "title": "Hide setups",
+        "category": "Setup",
+        "icon": "$(issues)"
+      },
+      {
+        "command": "mlga.showSetups",
+        "title": "Show setups",
+        "category": "Setup",
+        "icon": "$(issue-closed)"
+      },
+      {
+        "command": "mlga.copy",
+        "title": "Copy value",
+        "category": "Copy",
+        "icon": "$(copy)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@vscode/codicons": "^0.0.36"
+  }
+}
