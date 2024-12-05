@@ -9,7 +9,7 @@ Additionally, some work has been done to make the default logs appear more pleas
 - Making some logs more readable (combining them into one log or removing unimportant details)
 - Hide setups
 
-![preview](https://github.com/typicalHuman/mlga/blob/master/images/preview.png)
+![preview](./images/preview.png)
 
 ## Quick Intro
 
@@ -19,4 +19,4 @@ Additionally, some work has been done to make the default logs appear more pleas
 
 _If your logs are too long and you can't scroll, you should probably enable this option in VS Code_:
 
-![vscode](https://github.com/typicalHuman/mlga/blob/master/images/vscode_horizontal_scroll.png)
+![vscode](./images/vscode_horizontal_scroll.png)
