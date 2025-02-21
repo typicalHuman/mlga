@@ -217,26 +217,32 @@ export async function activate(context: vscode.ExtensionContext) {
     );
   }
 
-  vscode.workspace.onDidOpenTextDocument((document) => {
-    const rootPath = vscode.workspace.workspaceFolders
-      ? vscode.workspace.workspaceFolders[0].uri.fsPath
-      : null;
-    if (rootPath) {
-      const filePath = path.join(rootPath, "mlga.txt");
-      fs.readFile(filePath, "utf8", (err, data) => {
-        if (lastContent !== data) {
-          jsonData = FormatLogsToTree(data);
-          treeDataProvider.refresh(
-            treeDataProvider.expanded,
-            treeDataProvider.filter,
-            treeDataProvider.showSetups
-          );
-          lastContent = data;
-        }
-      });
+  vscode.workspace.onDidChangeTextDocument((e) => {
+    if (!e.document.fileName.includes("mlga")) {
+      return;
     }
+    updateTree(treeDataProvider);
   });
+  updateTree(treeDataProvider);
 }
-export function deactivate() {
-  
+
+function updateTree(treeDataProvider: MLGATreeDataProvider) {
+  const rootPath = vscode.workspace.workspaceFolders
+    ? vscode.workspace.workspaceFolders[0].uri.fsPath
+    : null;
+  if (rootPath) {
+    const filePath = path.join(rootPath, "mlga.txt");
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (lastContent !== data) {
+        jsonData = FormatLogsToTree(data);
+        treeDataProvider.refresh(
+          treeDataProvider.expanded,
+          treeDataProvider.filter,
+          treeDataProvider.showSetups
+        );
+        lastContent = data;
+      }
+    });
+  }
 }
+export function deactivate() {}

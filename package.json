@@ -3,7 +3,7 @@
   "displayName": "MLGA",
   "author": "typicalHuman",
   "description": "Make Logs Great Again (foundry logs viewer).",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.95.0"
   },
